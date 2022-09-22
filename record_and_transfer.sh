@@ -19,7 +19,6 @@ sshpass -p$(cat $password_path) ssh tv@tv -t "ls ~"
 for j in 1 2 3; do
     sshpass -p$(cat $password_path) scp /home/pi/recordings/$filename tv@tv:/Volumes/Torrents/_recordings
     if sshpass -p$(cat $password_path) ssh tv@tv -t "ls /Volumes/Torrents/_recordings" | grep "$filename"; then
-	    rm /home/pi/recordings/$filename
 	    exit 0
     fi
 done
