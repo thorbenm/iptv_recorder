@@ -5,7 +5,10 @@ start=$2
 end=$3
 name=$4
 
-if [ "$(grep "\"$channel\"" /home/pi/iptv/* -h | wc -l)" != "1" ]; then echo "channel not found"; exit 2; fi
+if [ "$(grep "\"$channel\"" /home/pi/iptv/* -h | wc -l)" != "1" ]; then
+	echo "channel not found"
+	exit 2
+fi
 
 filename=$(date -f - +%Y-%m-%d__%H-%M <<< "$start")__$(date -f - +%H-%M <<< "$end")__${channel// /_}__${name// /_}.ts
 iptv_url=$(grep "\"$channel\"" /home/pi/iptv/* -A 1 -h | tail -1)
