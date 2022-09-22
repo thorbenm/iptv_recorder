@@ -11,7 +11,6 @@ do
         size=$(du -sb /home/pi/recordings/ | awk '{print $1}')
         if [ $size -gt $threshold ]
         then
-		echo "removing"
                 rm /home/pi/recordings/$(ls /home/pi/recordings/ | head -1)
         fi
 done
